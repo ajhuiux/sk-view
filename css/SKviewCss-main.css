@@ -46,11 +46,11 @@ header .utilContainer > .util {
     padding: 0 40px;
     color: #f9f9f98f;
 }
-header .utilContainer > .util:nth-child(1) {
+header .utilContainer >.util:hover {
     background-color: #e51937;
-    color: #f9f9f9;
+    color: #fff;
 }
-header .utilContainer > .util:nth-child(n+2)::after {
+header .utilContainer > .util::after {
     content: "";
     position: absolute;
     right: 0;
@@ -58,8 +58,14 @@ header .utilContainer > .util:nth-child(n+2)::after {
     width: 1px;
     height: 20px;
     background-color: #f9f9f98f;
-
 }
+.util:hover::after {
+    display: none;
+}
+/*  여기까쥐 */
+
+.util:nth-child(2):hover > .util:first-child::after{display:none;}
+
 header .top {
     width: 100%;
     height: 90px;
@@ -91,7 +97,6 @@ header .gnb .depth1 {
     width: 150px;
     height: 90px;
     cursor: pointer;
-    /* height: 90px; */
 }
 header .gnb .depth1 > span {
     position: relative;
@@ -111,25 +116,27 @@ header .gnb .depth1:hover::after {
     width: 100%;
     transition: width .5s;
 }
-
 header .gnb .gnbAll {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    position: fixed;
+    position: absolute;
     top: 120px;
     left: 0;
     width: 100%;
     height: 0;
+    /* height: 300px; */
     overflow-y: hidden;
     background: #fff;
     box-shadow: 0px 30px 100px #f9f9f98f;
+    border-top: 1px solid #eeeeee;
+    z-index: 2;
 }
-header .gnb:hover .gnbAll, header .gnbAll:hover {
+header .gnb:hover .gnbAll, .gnbAll:hover {
     height: 300px;
     transition: height 1s ;
-    border-top: 2px solid #f9f9f9;
 }
+
 header .gnb .gnbAll .depth2 {
     width: 150px;
     text-align: center;
@@ -226,7 +233,7 @@ header .topUtil > span:nth-child(2):hover {
     height: 35px;
     cursor: pointer;
 }
-.menuBt >span {
+.menuBt > span {
     display: block;
     position: absolute;
     top: 10px;
@@ -240,8 +247,12 @@ header .topUtil > span:nth-child(2):hover {
 header > aside {
     display: flex;
     position: fixed;
+    z-index: 3;
     top: 30px;
     right: -400px;
+}
+header > aside.on {
+    right: 0;
 }
 header > aside > .tabs {
     display: flex;
@@ -271,7 +282,6 @@ header > aside > .tabs {
     background: #1b1b1b;
 }
 .tab > span {
-    width: 40px;
     writing-mode: tb-rl;
 }
 .tab > .number {
@@ -283,28 +293,458 @@ header > aside > .tabs {
     background: #444;
     opacity: .5;
 }
-.tabBox {
+.tabCon {
     width: 400px;
 }
-.tabBox > section.plan {
+.tabCon > section.plan {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
+    padding: 25px;
     background: #e51937;
-    height: 110%;
+    color: #fff;
 }
-.tabBox > section.plan > h2 {
+.tabCon > section.plan > h2 {
     margin: 0 0 20px 0;
 }
-.calendar-c {
+section.plan > ul {
     width: 100%;
+    height: 430px;
+    overflow-y: scroll;
 }
 .calendar {
     width: 100%;
-    height: 200px;
+    margin-bottom: 10px;
+    padding: 10px 20px;
     border-radius: 30px;
     background: #c51e37;
 }
-/*---------*/
+.calendar:last-of-type {
+    margin: 0;
+}
+.calendar > h3 {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.calendar > a {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    color: #fff;
+}
+.calCate {
+    padding: 5px 10px;
+    margin: 0 5px 0 0;
+    border-radius: 50px;
+    background: #f58026;
+    font-size: 0.8rem;
+}
 
+/*---------*/
+/* 메인비주얼 */
+
+
+.mainVisual {
+    height: 700px;
+    background-color: darkblue;
+}
+.mainVisual > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+    padding-bottom: 180px;
+    position: relative;
+    z-index: 1;
+}
+.mainVisual p {
+    font-size: 2.5rem;
+    color: #fff;
+    font-weight: 500;
+}
+.mainVisual .num {
+    opacity: .3;
+    position: absolute;
+    bottom: 230px;
+    left: -40px;
+    z-index: 1;
+    font-size: 5rem;
+
+}
+/* .moreBt {
+    margin-top: 20px;
+    width: 180px;
+    height: 40px;
+c
+} */
+/*-----*/
+section {
+    height: 100nh;
+}
+.sec01 {
+    padding: 100px 0 ;
+    overflow: hidden;
+}
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+.complexBox {
+    margin-bottom: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.pic {
+    width: 350px;
+    height: 350px;
+    background: darkblue;
+}
+.comDetails {
+    width: 350px;
+}
+.comCate {
+    color: #e51937;
+    margin: 10px 0;
+}
+.comDetails > h2 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-line-clamp: 1;
+    line-height: 2rem;
+    max-height: 2rem;
+    margin-bottom: 10px;
+}
+.comDetails dl {
+    display: flex;
+    margin-bottom: 10px;
+}
+.comDetails dt {
+    margin-right: 10px;
+    font-weight: 600;
+}
+.buttonG {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.buttonG > button {
+    width: 49%;
+    height: 40px;
+    background: transparent;
+    border: 1px solid #333;
+    font-size: 1rem;
+    cursor: pointer;
+}
+.buttonG > button:nth-child(2) {
+    border-color: #e51937;
+}
+
+.moreBt {
+    display: block;
+    position: relative;
+    margin: 80px auto 0 ;
+    padding-right: 30px;
+    width: 180px;
+    height: 50px;
+    border: 1px solid #000;
+    background-color: transparent;
+    font-size: 1.5rem;
+    cursor: pointer; 
+}
+.moreBt::after {
+    content: "";
+    background: #444;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 30px;
+    height: 30px;
+    transform: rotate(0deg);
+}
+.moreBt:hover {
+
+}
+.moreBt:hover::after {
+    transform: rotate(360deg);
+    transition: transform 1s;
+}
+
+
+/* section 02 */
+.bg {
+    width: 100%;
+    height: 400px;
+    background:turquoise;
+
+}
+.brandCon {
+    display: flex;
+}
+.brand {
+    display: flex;
+    padding: 0 50px;
+    width: 50%;
+    height: 400px;
+    background: #f58026;
+    align-items: center;
+}
+.brand:nth-child(2) {
+    background: #e51937;
+}
+.brand:hover {
+    width: 70%;
+    transition: 1s width;
+}
+.brandText {
+    display: flex;
+    flex-direction: column;
+    max-width: 450px;
+    color: #fff;
+}
+.brandText > h2 {
+    font-size: 2.5rem;
+}
+.brandText > span {
+    opacity: 0;
+}
+.brand:hover .brandText > span {
+    opacity: 1;
+    transition: 2s opacity;
+}
+.brandText > .copy {
+    margin: 20px 0;
+}
+.moveBt {
+    position: relative;
+    width: 150px;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 1.25rem;
+    background: transparent;
+    cursor: pointer;
+}
+.moveBt::after {
+    content: "";
+    width: 100px;
+    height: 2px;
+    position: absolute;
+    background: #fff;
+    top: 50%;
+    right: -90px;
+}
+
+/* sec03 - 1 */
+/* .sec03 {
+    margin: 100px 0 ;
+    position: relative;
+}
+.sec03::before {
+    content: "";
+    width: 60%;
+    height: 130%;
+    position: absolute;
+    background: #c51e37;
+    z-index: 0;
+}
+.textBox, .newsBox {
+    position: relative;
+}
+.newsBox > ul {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+}
+
+.news {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 5px 5px 10px rgba(68, 68, 68, 0.075);
+    margin: 0 10px;
+    flex-shrink: 0;
+}
+.newsPic {
+    width: 100%;
+    height: 240px;
+    background: tomato;
+    margin-bottom: 20px;
+} */
+
+/* sec03 -2 */
+
+.sec03 {
+    /* height: 800px; */
+    background: url(../images/image_readtop_2019_556151_15638649363837909.jpg);
+    background-size: cover;
+    padding: 100px 0;
+}
+.sec03 .textBox {
+    color: #fff;
+}
+.newsCon {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    align-items: center;
+    height: 500px;
+    
+}
+.news {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    width: calc(50% - 20px);
+    height: 30%;
+    padding: 30px;
+    background: #fff;
+    box-shadow: 10px 10px 20px rgba(68, 68, 68, 0.068);
+
+}
+.news:nth-of-type(1) {
+    flex-direction: row;
+    width: 50%;
+    height: 100%;
+    margin-right: 20px;
+}
+
+.newsPic, .newsTxt{
+    width: 48%;
+    height: 100%;
+}
+.newsTxt {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 80px 0;
+}
+.newsPic {
+    background: #ccc;
+}
+.news .title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    
+}
+.news:nth-of-type(1) .title {
+    margin: 0 0 20px 0;
+}
+.news .copy {
+    margin: 0 0 40px 0;
+   
+}
+.news button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-size: 2.25rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+.news.sell {
+    position: relative;
+}
+.news.sell > .title {
+    padding-left: 90px;
+    overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+}
+.news.sell::before {
+    content: "분양소식";
+    position: absolute;
+    top: 27px;
+    left: 30px;
+    width: 80p;
+    padding: 10px;
+    background: #c51e37;
+    color: #fff;
+}
+
+/* section 04 */
+.sec04 {
+    height: 800px;
+    padding: 80px 0 100px;
+    background: #f9f9f9;
+}
+.sec04 ul {
+    display: flex;
+    justify-content: space-between;
+}
+.sec04 ul > li {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 20px;
+    width: 24%;
+    height: 400px;
+    border: 1px solid #989898a6;
+    background: #fff;
+}
+.sec04 ul > li:hover {
+    box-shadow: 10px 10px 20px rgba(68, 68, 68, 0.068);
+    transition: all 1s;
+}
+.sec04 ul > li:last-of-type {
+    justify-content: center;
+    border: none;
+    text-align: end;
+    background: transparent;
+}
+.sec04 ul > li:last-of-type:hover {
+    box-shadow: none;
+}
+
+.sec04 .textBox {
+    width: 100%;
+    color: #4e3a32;
+}
+.icon {
+    display: block;
+    width: 40px;
+    height: 40px;
+    background-color: #b98368;
+}
+.buttonBox{
+    display: inherit;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 40px;
+}
+.service {
+    font-size: 2rem;
+    position: relative;
+
+}
+.service::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #cfcfcf;
+}
+.serviceNum {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 2.25rem;
+    color: #000;
+}
+
+/*- footer --*/
+
+footer {
+    height: 400px;
+    background: #2c2c2c;
+}
